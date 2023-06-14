@@ -1,0 +1,19 @@
+---
+- name: Update Ubuntu 22.04 servers
+  hosts: all
+  become: true
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Upgrade packages
+      apt:
+        upgrade: dist
+
+    - name: Clean up old packages
+      apt:
+        autoremove: yes
+        autoclean: yes
+
+      

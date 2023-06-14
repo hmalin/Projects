@@ -1,0 +1,182 @@
+{
+  "main": {
+    "id": "88723f422a6ff9b7",
+    "type": "split",
+    "children": [
+      {
+        "id": "f071ed24c23dd3fb",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3e0e6a2bf1d804e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Ansible/Add ssh-key playbook.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "62ec3084f4cbf291",
+    "type": "split",
+    "children": [
+      {
+        "id": "4a0829969b1299fd",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "dc524c3670a794ca",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "8e4431b590619b95",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e0de5828353a31cd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "a3695a22653f5278",
+    "type": "split",
+    "children": [
+      {
+        "id": "7fb0736db4315ce3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f085ea8e29753ce9",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Ansible/Add ssh-key playbook.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9967bbe25ac0e327",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Ansible/Add ssh-key playbook.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5b1604b5f6779a8f",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6e4f71fb9e58e667",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Ansible/Add ssh-key playbook.md"
+              }
+            }
+          },
+          {
+            "id": "a36467fd5814f4be",
+            "type": "leaf",
+            "state": {
+              "type": "advanced-tables-toolbar",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 200
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "table-editor-obsidian:Advanced Tables Toolbar": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
+    }
+  },
+  "active": "f3e0e6a2bf1d804e",
+  "lastOpenFiles": [
+    "Ansible/update.yml",
+    "Ansible/installsshkeys.yml",
+    "Ansible/failtoban.yml",
+    "Ansible/commands.md",
+    "Docker/Trafik.md",
+    "kubernetes/K3S Proxmox HA Cluster.md",
+    "kubernetes/K3S  HA 3 Node Embedded etcd.md",
+    "Ansible/Add ssh-key playbook.md",
+    "Nework/topolgy (1).drawio",
+    "Excalidraw/Drawing 2023-06-10 02.12.48.excalidraw.md",
+    "Nework/topology.md",
+    "Excalidraw/Drawing 2023-06-10 02.10.33.excalidraw.md",
+    "Excalidraw/Drawing 2023-06-10 02.09.06.excalidraw.md",
+    "Excalidraw",
+    "Nework",
+    "Proxmox",
+    "Untitled.md",
+    "kubernetes",
+    "Ansible",
+    "Docker"
+  ]
+}

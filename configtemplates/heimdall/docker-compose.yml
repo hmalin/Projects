@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  heimdall:
+    image: linuxserver/heimdall
+    container_name: heimdall 
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/username/heimdall/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.heimdall.entrypoints=http"
+      - "traefik.http.routers.heimdall.rule=Host(`heimdall.local.EXAMPLE.com`)"
+      - "traefik.http.middlewares.heimdall-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.heimdall.middlewares=heimdall-https-redirect"
+      - "traefik.http.routers.heimdall-secure.entrypoints=https"
+      - "traefik.http.routers.heimdall-secure.rule=Host(`heimdall.local.EXAMPLE.com`)"
+      - "traefik.http.routers.heimdall-secure.tls=true"
+      - "traefik.http.routers.heimdall-secure.service=heimdall"
+      - "traefik.http.services.heimdall.loadbalancer.server.port=8080"
+      - "traefik.docker.network=proxy"
+
+networks:
+  proxy:
+    external: true

@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  <IMAGE>:
+    image: <IMAGE>/<IMAGE>
+    container_name: <IMAGE>
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - proxy
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /home/username/<IMAGE>/data:/data
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.<IMAGE>.entrypoints=http"
+      - "traefik.http.routers.<IMAGE>.rule=Host(`<IMAGE>.local.example.com`)"
+      - "traefik.http.middlewares.<IMAGE>-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.<IMAGE>.middlewares=<IMAGE>-https-redirect"
+      - "traefik.http.routers.<IMAGE>-secure.entrypoints=https"
+      - "traefik.http.routers.<IMAGE>-secure.rule=Host(`<IMAGE>.local.example.com`)"
+      - "traefik.http.routers.<IMAGE>-secure.tls=true"
+      - "traefik.http.routers.<IMAGE>-secure.service=<IMAGE>"
+      - "traefik.http.services.<IMAGE>.loadbalancer.server.port=SERVICE_DEFAULT_PORT"
+      - "traefik.docker.network=proxy"
+
+networks:
+  proxy:
+    external: true
