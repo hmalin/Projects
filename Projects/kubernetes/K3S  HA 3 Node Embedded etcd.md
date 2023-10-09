@@ -31,15 +31,7 @@ Total Number of nodes | Failed Node Tolerance
 6|2
 ...|...
 
-## Get a registered Address
-To achieve a high-available scenario you also need to load balance incoming connections between the server nodes.
-### Sophos XG NAT Rule
-You can do this by creating a Load-Balance NAT Rule on the Sophos XG Firewall.
-1. Create a new `IP Host` object from type `IP List`.
-2. Add all IP addresses from the Server nodes
-3. Add an additional IP Address to your incoming interface
-4. Create a new NAT Rule to MASQ (SNAT) the incoming traffic on the additional IP Address to the `IP Host` object. Once you do this you can specify the Load-Balancing Method in the Advanced Settings
-5. Set a Load Balancing Method like Round-robing f.e. and enable Health Checks to failover in case of a node outage
+
 
 ## Install Agents
 You can still add additional nodes without a server function to this cluster.
