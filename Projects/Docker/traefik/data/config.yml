@@ -1,0 +1,20 @@
+http:
+  routers:
+    YOUR_SERVICE_NAME:
+      entryPoints:
+        - "https"
+      rule: "Host(`YOUR_SERVICE_NAME.example.com`)"
+      middlewares:
+       - https-redirectscheme
+      tls: {}
+      service: "YOUR_SERVICE_NAME"
+  services:
+    jenkins:
+      loadBalancer:
+        servers:
+          - url: "http://192.x.x.x:PORT#"
+  middlewares:
+    https-redirectscheme:
+      redirectScheme:
+        scheme: https
+        permanent: true

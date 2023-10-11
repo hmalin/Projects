@@ -1,0 +1,28 @@
+---
+#  When using Traefik, use this section
+networks:
+   proxy:
+     external: true
+services:
+  teleport:
+    image: public.ecr.aws/gravitational/teleport-distroless:14
+    container_name: teleport
+    volumes:
+      - ./config:/etc/teleport
+      - ./data:/var/lib/teleport
+    #  Traefik example configuration
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.services.teleport.loadbalancer.server.port=3080"
+      - "traefik.http.services.teleport.loadbalancer.server.scheme=https"
+      - "traefik.http.routers.teleport-http.entrypoints=http"
+      - "traefik.http.routers.teleport-http.rule=HostRegexp(`teleport.example.com`, `{subhost:[a-z]+}.teleport.example.com`)"
+      - "traefik.http.routers.teleport-https.entrypoints=https"
+      - "traefik.http.routers.teleport-https.rule=HostRegexp(`teleport.example.com`, `{subhost:[a-z]+}.teleport.example.com`)"
+      - "traefik.http.routers.teleport-https.tls=true"
+      - "traefik.http.routers.teleport-https.tls.certresolver=cloudflare"
+      - "traefik.http.routers.teleport-https.tls.domains[0].main=teleport.example.com"
+      - "traefik.http.routers.teleport-https.tls.domains[0].sans=*.teleport.example.com"
+    networks:
+       - proxy
+    restart: unless-stopped

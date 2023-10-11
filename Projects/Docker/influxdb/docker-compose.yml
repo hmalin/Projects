@@ -1,0 +1,39 @@
+services:
+  influxdb:
+    container_name: influxdb
+    image: influxdb:2.7.1-alpine
+    restart: unless-stopped
+    networks:
+      - proxy
+    volumes:
+      - data:/var/lib/influxdb2
+      - influxdb2:/etc/influxdb2
+    #Best Practice store creds in env file
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=YOUR_USERNAME
+      - DOCKER_INFLUXDB_INIT_PASSWORD=YOUR_PASSWORD
+      - DOCKER_INFLUXDB_INIT_ORG=YOURORG0
+      - DOCKER_INFLUXDB_INIT_BUCKET=YOUR_BUCKETNAME
+      - DOCKER_INFLUXDB_INIT_RETENTION=1w
+    
+    labels:
+    # using traefik 
+      - "traefik.enable=true"
+      - "traefik.http.routers.influxdb.entrypoints=http"
+      - "traefik.http.routers.influxdb.rule=Host(`influxdb.example.com`)"
+      - "traefik.http.middlewares.influxdb-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.routers.influxdb.middlewares=influxdb-https-redirect"
+      - "traefik.http.routers.influxdb-secure.entrypoints=https"
+      - "traefik.http.routers.influxdb-secure.rule=Host(`influxdb.example.com`)"
+      - "traefik.http.routers.influxdb-secure.tls=true"
+      - "traefik.http.routers.influxdb-secure.service=influxdb"
+      - "traefik.http.services.influxdb.loadbalancer.server.port=8086"
+      - "traefik.docker.network=proxy"
+volumes:
+ data:
+ influxdb2:
+
+networks:
+  proxy:
+    external: true
