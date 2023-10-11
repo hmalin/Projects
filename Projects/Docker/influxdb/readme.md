@@ -1,4 +1,4 @@
----
+
 ## InfluxDB 
 
 **InfluxDB** is an open-source time series database (TSDB) designed to handle high write and query loads. Developed by InfluxData, it is particularly suited for recording events, metrics, or performing analytics on time series data.

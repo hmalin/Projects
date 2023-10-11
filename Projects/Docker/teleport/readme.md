@@ -1,4 +1,4 @@
----
+
 **Teleport** is an open-source solution developed by Gravitational that provides privileged access management for elastic compute infrastructure and simplifies SSH access to servers, Kubernetes clusters, and internal applications.
 
 ### Key Features:

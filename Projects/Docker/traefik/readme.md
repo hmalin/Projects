@@ -1,4 +1,4 @@
----
+
 ## Traefik
 
 **Traefik** is a dynamic and modern HTTP reverse proxy and load balancer made to deploy microservices with ease. It can route HTTP requests to the appropriate services based on their configurations and has been designed for cloud-native solutions, supporting several backends (Docker, Swarm mode, Kubernetes, Marathon, Consul, Etcd, Rancher, Amazon ECS, and more).
