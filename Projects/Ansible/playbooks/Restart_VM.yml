@@ -1,0 +1,27 @@
+---
+- name: Restart VM
+  hosts: all
+  become: true
+  tasks:
+    - name: Restart
+      ansible.builtin.shell: reboot -h now
+      ignore_unreachable: true
+
+- name: Wait for servers to come back online
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Wait for 120 seconds to ensure the hosts are back up
+      pause:
+        seconds: 120
+
+- name: Check if hosts are reachable
+  hosts: all
+  gather_facts: no
+  tasks:
+    - name: Ping servers
+      ping:
+      register: ping_result
+      until: ping_result is succeeded
+      retries: 5
+      delay: 60 

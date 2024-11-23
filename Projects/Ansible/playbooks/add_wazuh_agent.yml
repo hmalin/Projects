@@ -1,0 +1,21 @@
+---
+- name: Install WAZUH Agent
+  hosts: all
+  become: true
+  tasks:
+    - name: Download Wazuh agent package
+      get_url:
+        url: https://packages.wazuh.com/4.x/apt/pool/main/w/wazuh-agent/wazuh-agent_4.7.5-1_amd64.deb
+        dest: /tmp/wazuh-agent_4.7.5-1_amd64.deb
+
+    - name: Install Wazuh agent package
+      ansible.builtin.shell: WAZUH_MANAGER='IP_ADDRESS' dpkg -i /tmp/wazuh-agent_4.7.5-1_amd64.deb
+
+    - name: Reload systemd manager configuration
+      command: systemctl daemon-reload
+
+    - name: Enable and start wazuh-agent service
+      systemd:
+        name: wazuh-agent
+        enabled: yes
+        state: started

@@ -1,0 +1,31 @@
+services:
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
+    restart: unless-stopped
+    #ports: 
+    # - "8080:8080"
+    networks:
+      - proxy
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    labels: #disregard if not using traefik reverse proxy
+     - "traefik.enable=true"
+     - "traefik.http.routers.jenkins.entrypoints=http"
+     - "traefik.http.routers.jenkins.rule=Host(`jenkins.YOURDOMAIN.com`)"
+     - "traefik.http.middlewares.jenkins-https-redirect.redirectscheme.scheme=https"
+     - "traefik.http.routers.jenkins.middlewares=jenkins-https-redirect"
+     - "traefik.http.routers.jenkins-https.entrypoints=https"
+     - "traefik.http.routers.jenkins-https.rule=Host(`jenkins.YOURDOMAIN.com`)"
+     - "traefik.http.routers.jenkins-https.tls=true"
+     - "traefik.http.routers.jenkins-https.tls.certresolver=YOURCERTRESOVLER"
+     - "traefik.http.routers.jenkins-https.service=jenkins"
+     - "traefik.docker.network=proxy"
+     - "traefik.http.services.jenkins.loadbalancer.server.port=8080"
+  ssh-agent:
+    image: jenkins/ssh-agent
+volumes:
+  jenkins_home:
+networks:
+ proxy:
+    external: true
